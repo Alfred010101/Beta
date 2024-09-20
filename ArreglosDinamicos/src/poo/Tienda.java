@@ -71,6 +71,8 @@ public class Tienda
                     factura.setFolio(Controlador.validarFolio());
                     factura.setFecha(new Date().toString());
                     ArregloFactura.insertar(factura);
+                    MatrizDetalles.insertar();
+                    
                     char mas;
                     do
                     {
@@ -81,7 +83,7 @@ public class Tienda
                         int index = ArregloAlmacen.buscarId(detalle.getId());
                         detalle.setCantidad(Controlador.validarCantidad(index));
                         detalle.setPrecio(ArregloAlmacen.productos[index].getPrecio());
-                       // MatrizDetalles
+                        MatrizDetalles.insertar(MatrizDetalles.matrizDetalles.length, detalle);
                         System.out.println("Agregar otro producto ({*}-N)=(Si) / N=(No) >$");
                         mas = Lecturas.leerCaracter();
                     } while (mas != 'N' && mas != 'n');
