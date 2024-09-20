@@ -1,5 +1,7 @@
 package clases;
 
+import poo.ArregloAlmacen;
+
 
 /**
  *
@@ -88,44 +90,10 @@ public class Detalle
     {
         this.precio = precio;
     }
-
-/*    public void llenarDetalles(ArregloAlm listaProductos, int folio)
+    
+    public String desplegar()
     {
-        this.folio = folio;
-        int index;
-        System.out.print("\nID del producto a vender $> ");
-        do
-        {
-            id = "" + Lecturas.leerEntero(true);
-            if (Integer.parseInt(id) > 0)
-            {
-                index = listaProductos.buscarId(Integer.parseInt(id));
-                if (index < 0)
-                {
-                    System.out.println("No se ha encontrado un producto asociado al ID.\nVuelva a intenrar $>");
-                    continue;
-                }
-                break;
-            }
-            System.out.print("El dato ingresado no es valido.\nVuelva a intenrar $> ");
-        } while (true);
-
-        System.out.print("CANTIDAD del producto $> ");
-        do
-        {
-            cantidad = Lecturas.leerEntero(true);
-            if (cantidad > 0)
-            {
-                precio =  listaProductos.venderProducto(index, cantidad);
-                if(precio > 0)
-                {
-                     break;
-                }
-                continue;               
-            }
-            System.out.print("El dato ingresado no es valido.\nVuelva a intenrar $> ");
-        } while (true);
-
-    }*/
-
+        return ArregloAlmacen.productos[ArregloAlmacen.buscarId(id)].getNombre() 
+                + "\t\t" + cantidad + "\t\t" + precio + "\t\t" + (cantidad * precio);
+    }
 }

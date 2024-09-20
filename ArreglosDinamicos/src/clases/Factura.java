@@ -1,8 +1,5 @@
 package clases;
 
-import poo.Lecturas;
-import poo.MatrizDetalles;
-
 /**
  *
  * @author admin
@@ -114,34 +111,7 @@ public class Factura
 
     public String desplegar()
     {
-        return getFolio() + "\t" + getFecha() + "\t" + getSubtotal() + "\t$" + getIva() + "\t" + getTotal();
+        return getFolio() + "\t" + getFecha() + "\t\t" + getSubtotal() + "\t\t$" + getIva() + "\t\t" + getTotal();
     }
 
-    /*public void llenarDatos(ArregloAlm listaProductos, MatrizDetalles matriz)
-    {
-        Detalle detalles = new Detalle();
-        System.out.print("FECHA de la factura $> ");
-        fecha = Lecturas.leerCadena();
-        String res;
-        do
-        {
-            detalles.llenarDetalles(listaProductos, getFolio());
-            do
-            {
-                System.out.print("Agragar otro producto 'Si/No' $> ");
-                res = Lecturas.leerCadena();
-                if (res.equalsIgnoreCase("si") || res.equalsIgnoreCase("no"))
-                {
-                    subtotal += detalles.getPrecio() * detalles.getCantidad();
-                    break;
-                }
-                System.out.println("<<<Opcion invalida>>> ");
-            } while (true);
-            System.out.println(res + " *WEE**EW**W*E" + res.equalsIgnoreCase("no"));
-        } while (res.equalsIgnoreCase("si"));
-
-        iva = subtotal * 0.16;
-        total = iva + subtotal;
-        System.out.println("\nGracias por su compra...!");        
-    }*/
 }

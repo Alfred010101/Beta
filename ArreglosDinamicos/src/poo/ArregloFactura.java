@@ -1,6 +1,7 @@
 
 package poo;
 
+import clases.Detalle;
 import clases.Factura;
 
 /**
@@ -20,7 +21,7 @@ public class ArregloFactura
             {
                 str += factura.desplegar() + "\n";
             }
-            System.out.println("\n\nFOLIO\t\t\tFECHA\tSUBTOTAL\tIVA\tTOTAL");
+            System.out.println("\n\nFOLIO\t\t\tFECHA\t\tSUBTOTAL\t\tIVA\t\tTOTAL");
             System.out.println("------------------------------------------------------------------");
         } else
         {
@@ -59,5 +60,19 @@ public class ArregloFactura
             }
         }
         return -1;
+    }
+    
+    public static double subTotal(Detalle[] detalles)
+    {
+        if (detalles != null)
+        {
+            double sub = 0.0;
+            for(Detalle reg : detalles)
+            {
+                sub += reg.getPrecio() * reg.getCantidad();
+            }
+            return sub;
+        }
+        return 0.0;
     }
 }

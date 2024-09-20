@@ -41,4 +41,12 @@ public class MatrizDetalles
         }
         System.out.println("\n\tSe agrego de forma exitosa...!");
     }
+    
+    public static void desplegar(int iD)
+    {
+        for(Detalle detalle: matrizDetalles[iD])
+        {
+            System.out.println(detalle.desplegar());
+        }
+    }
 }
