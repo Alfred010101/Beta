@@ -1,4 +1,5 @@
-package poo;
+package clases;
+
 
 /**
  *
@@ -8,7 +9,7 @@ public class Detalle
 {
 
     private int folio;
-    private String id;
+    private int id;
     private int cantidad;
     private double precio;
 
@@ -16,7 +17,7 @@ public class Detalle
     {
     }
 
-    public Detalle(int folio, String id, int cantidad, double precio)
+    public Detalle(int folio, int id, int cantidad, double precio)
     {
         this.folio = folio;
         this.id = id;
@@ -43,7 +44,7 @@ public class Detalle
     /**
      * @return the id
      */
-    public String getId()
+    public int getId()
     {
         return id;
     }
@@ -51,7 +52,7 @@ public class Detalle
     /**
      * @param id the id to set
      */
-    public void setId(String id)
+    public void setId(int id)
     {
         this.id = id;
     }
@@ -88,7 +89,7 @@ public class Detalle
         this.precio = precio;
     }
 
-    public void llenarDetalles(ArregloAlmacen listaProductos, int folio)
+/*    public void llenarDetalles(ArregloAlm listaProductos, int folio)
     {
         this.folio = folio;
         int index;
@@ -125,6 +126,6 @@ public class Detalle
             System.out.print("El dato ingresado no es valido.\nVuelva a intenrar $> ");
         } while (true);
 
-    }
+    }*/
 
 }

@@ -1,28 +1,30 @@
 
 package poo;
 
+import clases.Factura;
+
 /**
  *
  * @author admin
  */
 public class ArregloFactura
 {
-    private Factura lista [] = null;
+    public static Factura[] facturas = null;
 
      /**
-     * @return the lista
+     * @return the facturas
      */
     public int getListaLength()
     {
-        return lista != null ? lista.length : 0;
+        return facturas != null ? facturas.length : 0;
     }
     
     public String desplegar()
     {
         String str = "";
-        if (lista != null)
+        if (facturas != null)
         {
-            for (Factura factura : lista)
+            for (Factura factura : facturas)
             {
                 str += factura.desplegar() + "\n";
             }
@@ -37,16 +39,16 @@ public class ArregloFactura
 
   /*  public void insertar(Factura factura)
     {
-        if (lista == null)
+        if (facturas == null)
         {
-            lista = new Factura[1];
-            lista[0] = factura;
+            facturas = new Factura[1];
+            facturas[0] = factura;
         } else
         {
-            Factura tempLista[] = new Factura[lista.length + 1];
-            System.arraycopy(lista, 0, tempLista, 0, lista.length);
-            tempLista[lista.length] = factura;
-            lista = tempLista;
+            Factura tempLista[] = new Factura[facturas.length + 1];
+            System.arraycopy(facturas, 0, tempLista, 0, facturas.length);
+            tempLista[facturas.length] = factura;
+            facturas = tempLista;
         }
 
         System.out.println("\n\tRegistro exito...!");
@@ -54,11 +56,11 @@ public class ArregloFactura
 
     public int buscarId(int idBudcar)
     {
-        if (lista != null && idBudcar > 0)
+        if (facturas != null && idBudcar > 0)
         {
-            for (int i = 0; i < lista.length; i++)
+            for (int i = 0; i < facturas.length; i++)
             {
-                if (lista[i].getId() == idBudcar)
+                if (facturas[i].getId() == idBudcar)
                 {
                     return i;
                 }
@@ -72,8 +74,8 @@ public class ArregloFactura
         System.out.print("PRECIO del producto $> ");
         do
         {
-            lista[id].setPrecio(Lecturas.leerDoble(true));
-            if (lista[id].getPrecio() > 0)
+            facturas[id].setPrecio(Lecturas.leerDoble(true));
+            if (facturas[id].getPrecio() > 0)
             {
                 break;
             }
@@ -83,8 +85,8 @@ public class ArregloFactura
         System.out.print("EXISTENCIA del producto $> ");
         do
         {
-            lista[id].setExistencia(Lecturas.leerEntero(true));
-            if (lista[id].getExistencia() > 0)
+            facturas[id].setExistencia(Lecturas.leerEntero(true));
+            if (facturas[id].getExistencia() > 0)
             {
                 break;
             }
@@ -94,13 +96,13 @@ public class ArregloFactura
         System.out.println("\n Datos actualizados correctamente...!\n");
     }*/
     
-    public int buscarFolio(int idBudcar)
+    public static int buscarFolio(int idBudcar)
     {
-        if (lista != null && idBudcar > 0)
+        if (facturas != null && idBudcar > 0)
         {
-            for (int i = 0; i < lista.length; i++)
+            for (int i = 0; i < facturas.length; i++)
             {
-                if (lista[i].getFolio() == idBudcar)
+                if (facturas[i].getFolio() == idBudcar)
                 {
                     return i;
                 }

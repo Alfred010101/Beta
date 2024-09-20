@@ -1,5 +1,7 @@
 package poo;
 
+import clases.Detalle;
+
 /**
  *
  * @author admin

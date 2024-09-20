@@ -1,27 +1,22 @@
 package poo;
 
+import clases.Almacen;
+
 /**
  *
  * @author admin
  */
 public class ArregloAlmacen
 {
-    private Almacen lista[] = null;
 
-     /**
-     * @return the lista
-     */
-    public int getListaLength()
-    {
-        return lista != null ? lista.length : 0;
-    }
-    
-    public String desplegar()
+    public static Almacen[] productos = null;
+
+    public static String desplegar()
     {
         String str = "";
-        if (lista != null)
+        if (productos != null)
         {
-            for (Almacen producto : lista)
+            for (Almacen producto : productos)
             {
                 str += producto.desplegar() + "\n";
             }
@@ -34,30 +29,29 @@ public class ArregloAlmacen
         return str;
     }
 
-    public void insertar(Almacen producto)
+    public static void insertar(Almacen producto)
     {
-        if (lista == null)
+        if (productos == null)
         {
-            lista = new Almacen[1];
-            lista[0] = producto;
+            productos = new Almacen[1];
+            productos[0] = producto;
         } else
         {
-            Almacen tempVector[] = new Almacen[lista.length + 1];
-            System.arraycopy(lista, 0, tempVector, 0, lista.length);
-            tempVector[lista.length] = producto;
-            lista = tempVector;
+            Almacen tempVector[] = new Almacen[productos.length + 1];
+            System.arraycopy(productos, 0, tempVector, 0, productos.length);
+            tempVector[productos.length] = producto;
+            productos = tempVector;
         }
-
         System.out.println("\n\tRegistro exito...!");
     }
 
-    public int buscarId(int idBudcar)
+    public static int buscarId(int idBudcar)
     {
-        if (lista != null && idBudcar > 0)
+        if (productos != null && idBudcar > 0)
         {
-            for (int i = 0; i < lista.length; i++)
+            for (int i = 0; i < productos.length; i++)
             {
-                if (lista[i].getId() == idBudcar)
+                if (productos[i].getId() == idBudcar)
                 {
                     return i;
                 }
@@ -71,8 +65,8 @@ public class ArregloAlmacen
         System.out.print("PRECIO del producto $> ");
         do
         {
-            lista[index].setPrecio(Lecturas.leerDoble(true));
-            if (lista[index].getPrecio() > 0)
+            productos[index].setPrecio(Lecturas.leerDoble(true));
+            if (productos[index].getPrecio() > 0)
             {
                 break;
             }
@@ -82,8 +76,8 @@ public class ArregloAlmacen
         System.out.print("EXISTENCIA del producto $> ");
         do
         {
-            lista[index].setExistencia(Lecturas.leerEntero(true));
-            if (lista[index].getExistencia() > 0)
+            productos[index].setExistencia(Lecturas.leerEntero(true));
+            if (productos[index].getExistencia() > 0)
             {
                 break;
             }
@@ -93,15 +87,16 @@ public class ArregloAlmacen
         System.out.println("\n Datos actualizados correctamente...!\n");
     }
     
+    
     public double venderProducto(int i, int cantidad)
     {
-        if(cantidad > 0 && cantidad <= lista[i].getExistencia())
+        /*if(cantidad > 0 && cantidad <= lista[i].getExistencia())
         {
             lista[i].setExistencia( lista[i].getExistencia() - cantidad);
             return lista[i].getPrecio();
         }
         
-        System.out.print("La CANTIDAD exede el numero de existencias.\nVuelva a intenrar $> ");
+        System.out.print("La CANTIDAD exede el numero de existencias.\nVuelva a intenrar $> ");*/
         return 0;
     }
 }

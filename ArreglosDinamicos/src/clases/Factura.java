@@ -1,4 +1,7 @@
-package poo;
+package clases;
+
+import poo.Lecturas;
+import poo.MatrizDetalles;
 
 /**
  *
@@ -114,7 +117,7 @@ public class Factura
         return getFolio() + "\n" + getFecha() + "\n\t" + getSubtotal() + "\n\t$" + getIva() + "\n\t" + getTotal() + "\n";
     }
 
-    public void llenarDatos(ArregloAlmacen listaProductos, MatrizDetalles matriz)
+    /*public void llenarDatos(ArregloAlm listaProductos, MatrizDetalles matriz)
     {
         Detalle detalles = new Detalle();
         System.out.print("FECHA de la factura $> ");
@@ -140,5 +143,5 @@ public class Factura
         iva = subtotal * 0.16;
         total = iva + subtotal;
         System.out.println("\nGracias por su compra...!");        
-    }
+    }*/
 }

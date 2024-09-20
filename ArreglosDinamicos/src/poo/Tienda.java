@@ -1,5 +1,9 @@
 package poo;
 
+import clases.Factura;
+import clases.Almacen;
+import clases.Detalle;
+
 /**
  *
  * @author admin
@@ -9,10 +13,10 @@ public class Tienda
 
     public static void main(String[] args)
     {
-        ArregloAlmacen listaProductos = new ArregloAlmacen();
+        //ArregloAlm listaProductos = new ArregloAlm();
         ArregloFactura listaFacturas = new ArregloFactura();
         MatrizDetalles matriz = new MatrizDetalles();
-        
+
         int opcion;
         do
         {
@@ -30,52 +34,51 @@ public class Tienda
             {
                 case 1:
                     Almacen producto = new Almacen();
-                    
-                    System.out.print("\n\nID del producto $> ");
-                    do
-                    {
-                        producto.setId(Lecturas.leerEntero(true));
-                        if (producto.getId() > 0)
-                        {
-                            if (listaProductos.buscarId(producto.getId()) >= 0)
-                            {
-                                System.out.print("El ID introducido no esta disponible.\nVuelva a intenrar $>");
-                                continue;
-                            }
-                            break;
-                        }
-                        System.out.print("El dato ingresado no es valido.\nVuelva a intenrar $> ");
-                    } while (true);
-                    
-                    producto.llenarDatos();
-                    listaProductos.insertar(producto);
-                    
+                    producto.setId(Controlador.validarId());
+                    System.out.print("NOMBRE del producto $> ");
+                    producto.setNombre(Lecturas.leerCadena());
+                    producto.setExistencia(Controlador.validarExistencia());
+                    producto.setPrecio(Controlador.validarPrecio());
+                    ArregloAlmacen.insertar(producto);
                     break;
 
                 case 2:
                     System.out.print("\n\nIngrese el ID del producto a modificar $> ");
                     int productoModificar = Lecturas.leerEntero();
-                    productoModificar = listaProductos.buscarId(productoModificar);
+                    productoModificar = ArregloAlmacen.buscarId(productoModificar);
                     if (productoModificar < 0)
                     {
                         System.out.print("\nEl dato ingresado NO esta asociado a ningun producto...\n");
-                        continue;
+                    } else
+                    {
+                        //          listaProductos.actualizar(productoModificar);              
                     }
-                    listaProductos.actualizar(productoModificar);
                     break;
 
                 case 3:
-                    System.out.println(listaProductos.desplegar());
+                    System.out.println(ArregloAlmacen.desplegar());
                     break;
 
                 case 4:
-                    Factura factura = new Factura();
-                    if(listaProductos.getListaLength() == 0)
+                    if (ArregloFactura.facturas == null)
                     {
                         System.out.println("\n\t***No se puede iniciar venta***\n\t***No hay productos registrados***\n");
                         continue;
                     }
-                    System.out.print("\n\nFOLIO de la factura $> ");
+
+                    Factura factura = new Factura();
+                    factura.setFolio(Controlador.validarFolio());
+                    char mas;
+                    do
+                    {
+                        Detalle datalle = new Detalle();
+                        datalle.getId();
+                        
+                        System.out.println("Agregar otro producto ({*}-N)=(Si) / N=(No) >$");
+                        mas = Lecturas.leerCaracter();
+                    } while (mas != 'N' || mas != 'n');
+
+                    /*System.out.print("\n\nFOLIO de la factura $> ");
                     do
                     {
                         factura.setFolio(Lecturas.leerEntero(true));
@@ -92,7 +95,7 @@ public class Tienda
                     } while (true);
                     
                     factura.llenarDatos(listaProductos, matriz);
-                    
+                     */
                     break;
 
                 default:
