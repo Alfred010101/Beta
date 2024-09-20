@@ -114,7 +114,7 @@ public class Factura
 
     public String desplegar()
     {
-        return getFolio() + "\n" + getFecha() + "\n\t" + getSubtotal() + "\n\t$" + getIva() + "\n\t" + getTotal() + "\n";
+        return getFolio() + "\t" + getFecha() + "\t" + getSubtotal() + "\t$" + getIva() + "\t" + getTotal();
     }
 
     /*public void llenarDatos(ArregloAlm listaProductos, MatrizDetalles matriz)

@@ -3,6 +3,7 @@ package poo;
 import clases.Factura;
 import clases.Almacen;
 import clases.Detalle;
+import java.util.Date;
 
 /**
  *
@@ -48,7 +49,7 @@ public class Tienda
                     productoModificar = ArregloAlmacen.buscarId(productoModificar);
                     if (productoModificar < 0)
                     {
-                        System.out.print("\nEl dato ingresado NO esta asociado a ningun producto...\n");
+                        System.out.print("\nEl ID ingresado NO esta asociado a ningun producto...\n");
                     } else
                     {
                         //          listaProductos.actualizar(productoModificar);              
@@ -60,7 +61,7 @@ public class Tienda
                     break;
 
                 case 4:
-                    if (ArregloFactura.facturas == null)
+                    if (ArregloAlmacen.productos == null)
                     {
                         System.out.println("\n\t***No se puede iniciar venta***\n\t***No hay productos registrados***\n");
                         continue;
@@ -68,34 +69,26 @@ public class Tienda
 
                     Factura factura = new Factura();
                     factura.setFolio(Controlador.validarFolio());
+                    factura.setFecha(new Date().toString());
+                    ArregloFactura.insertar(factura);
                     char mas;
                     do
                     {
-                        Detalle datalle = new Detalle();
-                        datalle.getId();
-                        
+                        System.out.println(ArregloAlmacen.desplegar());
+                        Detalle detalle = new Detalle();
+                        detalle.setFolio(factura.getFolio());
+                        detalle.setId(Controlador.asignarId());
+                        int index = ArregloAlmacen.buscarId(detalle.getId());
+                        detalle.setCantidad(Controlador.validarCantidad(index));
+                        detalle.setPrecio(ArregloAlmacen.productos[index].getPrecio());
+                       // MatrizDetalles
                         System.out.println("Agregar otro producto ({*}-N)=(Si) / N=(No) >$");
                         mas = Lecturas.leerCaracter();
-                    } while (mas != 'N' || mas != 'n');
-
-                    /*System.out.print("\n\nFOLIO de la factura $> ");
-                    do
-                    {
-                        factura.setFolio(Lecturas.leerEntero(true));
-                        if (factura.getFolio() > 0)
-                        {
-                            if (listaFacturas.buscarFolio(factura.getFolio()) >= 0)
-                            {
-                                System.out.print("El FOLIO introducido no esta disponible.\nVuelva a intenrar $>");
-                                continue;
-                            }
-                            break;
-                        }
-                        System.out.print("El dato ingresado no es valido.\nVuelva a intenrar $> ");
-                    } while (true);
-                    
-                    factura.llenarDatos(listaProductos, matriz);
-                     */
+                    } while (mas != 'N' && mas != 'n');
+                    break;
+                
+                case 5:
+                    System.out.println(ArregloFactura.desplegar());
                     break;
 
                 default:
